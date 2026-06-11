@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f7f2">
+  <title>Summa — Math Test Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Summa home">
+      <span class="brand-mark">∑</span>
+      <span>Summa</span>
+    </a>
+    <span class="topbar-note">Thoughtful practice, instant feedback.</span>
+  </header>
+
+  <main>
+    <section id="setup-view" class="view setup-view">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Personalized math practice</p>
+          <h1>A better way to<br><em>practice math.</em></h1>
+        </div>
+        <p class="hero-copy">Build a focused test in seconds. Choose a level and format, then get clear feedback on every answer.</p>
+      </div>
+
+      <form id="test-settings" class="settings-card">
+        <div class="settings-heading">
+          <div>
+            <span class="step-number">01</span>
+            <h2>Build your test</h2>
+          </div>
+          <span class="estimate" id="time-estimate">About 10 minutes</span>
+        </div>
+
+        <fieldset>
+          <legend>Grade level</legend>
+          <p class="field-help">Questions automatically adapt to the selected grade.</p>
+          <div class="grade-grid" id="grade-grid"></div>
+        </fieldset>
+
+        <div class="settings-row">
+          <fieldset>
+            <legend>Number of questions</legend>
+            <div class="segmented" id="count-options">
+              <label><input type="radio" name="question-count" value="5"><span>5</span></label>
+              <label><input type="radio" name="question-count" value="10" checked><span>10</span></label>
+              <label><input type="radio" name="question-count" value="15"><span>15</span></label>
+              <label><input type="radio" name="question-count" value="20"><span>20</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Question style</legend>
+            <div class="style-options">
+              <label class="style-option">
+                <input type="radio" name="question-style" value="standard" checked>
+                <span class="style-option-content"><b>Numbers</b><small>Clear equations and expressions</small></span>
+                <span class="radio-dot"></span>
+              </label>
+              <label class="style-option">
+                <input type="radio" name="question-style" value="story">
+                <span class="style-option-content"><b>Story problems</b><small>Math in everyday situations</small></span>
+                <span class="radio-dot"></span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="primary-button" type="submit">Generate my test <span>→</span></button>
+      </form>
+    </section>
+
+    <section id="test-view" class="view test-view hidden">
+      <div class="test-header">
+        <button class="text-button" id="back-to-setup" type="button">← Change settings</button>
+        <div class="progress-area">
+          <div class="progress-label"><span id="progress-copy">0 of 10 answered</span><span id="progress-percent">0%</span></div>
+          <div class="progress-track"><span id="progress-bar"></span></div>
+        </div>
+      </div>
+      <div class="test-intro">
+        <div>
+          <p class="eyebrow" id="test-eyebrow">Grade 5 · Numbers</p>
+          <h1>Your math test</h1>
+        </div>
+        <p>Take your time. You can review every answer before submitting.</p>
+      </div>
+      <form id="answer-form">
+        <div id="question-list" class="question-list"></div>
+        <div class="submit-panel">
+          <div><b>Ready to see how you did?</b><span id="unanswered-note">Answer all questions to submit your test.</span></div>
+          <button class="primary-button" id="submit-test" type="submit" disabled>Submit for grading <span>→</span></button>
+        </div>
+      </form>
+    </section>
+
+    <section id="report-view" class="view report-view hidden">
+      <div class="report-actions no-print">
+        <button class="text-button" id="new-test" type="button">← Create another test</button>
+        <div>
+          <button class="secondary-button" id="print-report" type="button">Print / Save PDF</button>
+          <button class="primary-button small" id="download-report" type="button">Download report <span>↓</span></button>
+        </div>
+      </div>
+      <div id="report-content" class="report-sheet"></div>
+    </section>
+  </main>
+  <footer><span>Summa math practice</span><span>Made for curious minds</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
